@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button 
+    onclick="
+    Cart=Cart+1
+        console.log(`Cart Quantaty ${Cart} `);
+    "
+    >Add Cart</button>
+
+    <button  onclick="
+    Cart=Cart+2;
+         console.log(`Cart Quantity ${Cart}`);
+
+    ">+2</button>
+
+    <button onclick="
+    Cart=Cart+3;
+        console.log(`Cart Quantity ${Cart}`);
+
+    ">+3</button>
+
+    <button onclick="
+    Cart=0;
+    console.log(`Cart is ${Cart}`);
+    "
+    >Restart</button>
+
+
+    <button onclick="
+    if (Cart>0){
+    Cart-=1;
+        console.log(`Cart Quantity ${Cart}`);
+    }
+    else{
+        console.log(`cart is 0`);
+    }
+
+    "
+    >-1</button>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        let Cart=0;
+    console.log(Cart);
+    </script>
+</body>
+</html>
