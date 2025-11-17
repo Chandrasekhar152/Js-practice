@@ -9,84 +9,89 @@
 
     <p>ROCK paper Secissor</p>
     <button onclick="
-    const computeGuess= getComputerMove();
-    console.log(computeGuess);
-    if (computerMove==`rock`){
-        result=`tie`
-    }
-    else if (computerMove==`paper`){
-        result=`You lose`;
-    }
-    else{
-        result =  `You won`;
-    }
-alert(`${result}, computer choose ${computerMove}`);
-
+    playGame(`rock`);
     "
     >ROCK</button>
 
 
     <button onclick="
-
-    const computeGuess= getComputerMove();
-    console.log(computeGuess);
-
-    if (computerMove==`paper`){
-        result=`tie`
-    }
-    else if (computerMove==`sessior`){
-        result=`You lose`;
-    }
-    else{
-        result =  `You won`;
-    }
-alert(`${result}, computer choose ${computerMove}`);
-
-
+    playGame(`paper`);
     ">PAPER</button>
 
     <button onclick="
-    const computeGuess= getComputerMove();
-    console.log(computeGuess);
-
-    if (computerMove==`sessior`){
-        result=`tie`
-    }
-    else if (computerMove==`rock`){
-        result=`You lose`;
-    }
-    else{
-        result =  `You won`;
-    }
-alert(`${result}, computer choose ${computerMove}`);
-
-    ">SEISSOR</button
-
+    playGame(`sessior`);
+    ">SEISSOR</button>
 
 </body>
 
-
-
-
 <script>
-        let computerMove='';
+    let computerMove='';
 
-    function getComputerMove(){
-    
-    random=Math.random()
-    if (random>=0 && random<1/3){
-        computerMove=`rock`;
-    }
-    else if (random>=2/3 && random<1) {
-        computerMove =`paper`;
-    }
-    else{
-        computerMove=`sessior`;
-    }
-    return computerMove;
-}
+    function playGame(myMove) {
 
+        const computeGuess = getComputerMove();
+        console.log(computeGuess);
+
+        let result = "";
+
+        if (myMove === `rock`) {
+            if (computerMove == `rock`) {
+                result = `tie`;
+            }
+            else if (computerMove == `paper`) {
+                result = `You lose`;
+            }
+            else {
+                result = `You won`;
+            }
+            alert(`${result}, computer choose ${computerMove}`);
+        }
+
+        else if (myMove === `paper`) {
+            const computeGuess = getComputerMove();
+            console.log(computeGuess);
+
+            if (computerMove == `paper`) {
+                result = `tie`;
+            }
+            else if (computerMove == `sessior`) {
+                result = `You lose`;
+            }
+            else {
+                result = `You won`;
+            }
+            alert(`${result}, computer choose ${computerMove}`);
+        }
+
+        else {
+            const computeGuess = getComputerMove();
+            console.log(computeGuess);
+
+            if (computerMove == `sessior`) {
+                result = `tie`;
+            }
+            else if (computerMove == `rock`) {
+                result = `You lose`;
+            }
+            else {
+                result = `You won`;
+            }
+            alert(`${result}, computer choose ${computerMove}`);
+        }
+    }
+
+    function getComputerMove() {
+        let random = Math.random();
+        if (random >= 0 && random < 1/3) {
+            computerMove = `rock`;
+        }
+        else if (random >= 2/3 && random < 1) {
+            computerMove = `paper`;
+        }
+        else {
+            computerMove = `sessior`;
+        }
+        return computerMove;
+    }
 </script>
-
-
 </html>
