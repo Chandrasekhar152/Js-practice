@@ -14,16 +14,34 @@
     >
       Subscribe
     </button>
+
+    <button
+      class="domFollow"
+      onclick="
+    folow()
+    "
+    >
+      Follow
+    </button>
     <script>
       function sub() {
-        const buttonChange=document.querySelector('.dom');
-        if (buttonChange.innerText==='Subscribe'){
-            buttonChange.innerHTML='Subscribed'
+        const buttonChange = document.querySelector(".dom");
+        if (buttonChange.innerText === "Subscribe") {
+          buttonChange.innerHTML = "Subscribed";
+        } else {
+          buttonChange.innerHTML = "Subscribe";
         }
-        else{
-            buttonChange.innerHTML='Subscribe'
-        }
+
       }
+
+      function folow() {
+          const following = document.querySelector(".domFollow");
+          if (following.innerText === "Follow") {
+            following.innerHTML = "Follwed";
+          } else {
+            following.innerHTML = "Follow";
+          }
+        }
     </script>
   </body>
 </html>
