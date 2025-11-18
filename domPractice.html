@@ -23,7 +23,37 @@
     >
       Follow
     </button>
+
+    <br />
+    <p>Delivary page</p>
+    <p>No delivary charge for more then 100</p>
+    <p>10 rupess extra for less 100 even 99 rupess</p>
+
+    <input class="js-price" placeholder="Enter the cost" />
+    <button class="calculate" onclick="shoppingCal()">Calculate</button>
+
+    <p
+      class="pricee"
+      onclick="
+    shoppingCal()"
+    ></p>
+
     <script>
+      function shoppingCal() {
+        const input_value = document.querySelector(".js-price");
+        let cal = Number(input_value.value);
+        console.log(cal);
+        if (cal > 99) {
+          document.querySelector(".pricee").innerHTML = cal;
+        } else {
+          cal += 10;
+
+          document.querySelector(".pricee").innerHTML = cal;
+        }
+      }
+
+      let changePrice = document.querySelector(".pricee");
+
       function sub() {
         const buttonChange = document.querySelector(".dom");
         if (buttonChange.innerText === "Subscribe") {
@@ -31,17 +61,16 @@
         } else {
           buttonChange.innerHTML = "Subscribe";
         }
-
       }
 
       function folow() {
-          const following = document.querySelector(".domFollow");
-          if (following.innerText === "Follow") {
-            following.innerHTML = "Follwed";
-          } else {
-            following.innerHTML = "Follow";
-          }
+        const following = document.querySelector(".domFollow");
+        if (following.innerText === "Follow") {
+          following.innerHTML = "Follwed";
+        } else {
+          following.innerHTML = "Follow";
         }
+      }
     </script>
   </body>
 </html>
