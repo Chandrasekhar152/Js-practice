@@ -9,35 +9,35 @@
     <p>ROCK paper Secissor</p>
     <button
       onclick="
-    playGame(`rock`);
-    "
+        playGame(`rock`);
+      "
     >
       ROCK
     </button>
 
     <button
       onclick="
-    playGame(`paper`);
-    "
+        playGame(`paper`);
+      "
     >
       PAPER
     </button>
 
     <button
       onclick="
-    playGame(`sessior`);
-    "
+        playGame(`sessior`);
+      "
     >
       SEISSOR
     </button>
 
+    <!-- FIX 1 & 2: no playGame(`restart`), just reset score fields -->
     <button
       onclick="
-        scores.win = 0;
-        scores.lose = 0;
-        scores.tie = 0;
-        localStorage.removeItem('scores');
-        alert(`Score restarted! ${score.win} win ${score.lose} lose ${score.tie} tie`);
+        score.win = 0;
+        score.lose = 0;
+        score.tie = 0;
+        alert('Score restarted!');
       "
     >
       restart
@@ -45,23 +45,18 @@
   </body>
 
   <script>
-    // const score = {
-    //   win: 0,
-    //   lose: 0,
-    //   tie: 0,
-    // };
-    
-
-    let computerMove = "";
-    let result = "";
-    let scores = JSON.parse(localStorage.getItem(("scores"))) ||
-    {
+    // keep const, we don't reassign score (we only change its properties)
+    const score = {
       win: 0,
       lose: 0,
       tie: 0,
     };
 
+    let computerMove = "";
+    let result = "";
+
     function playGame(myMove) {
+      // FIX 3: call getComputerMove ONE time only
       const computeGuess = getComputerMove();
       console.log(computeGuess);
 
@@ -73,11 +68,8 @@
         } else {
           result = `You won`;
         }
-        // alert(`${result}, computer choose ${computerMove}`);
       } else if (myMove === `paper`) {
-        const computeGuess = getComputerMove();
-        console.log(computeGuess);
-
+        // removed extra getComputerMove() here
         if (computerMove == `paper`) {
           result = `tie`;
         } else if (computerMove == `sessior`) {
@@ -85,11 +77,8 @@
         } else {
           result = `You won`;
         }
-        // alert(`${result}, computer choose ${computerMove}`);
       } else if (myMove === `sessior`) {
-        const computeGuess = getComputerMove();
-        console.log(computeGuess);
-
+        // removed extra getComputerMove() here
         if (computerMove == `sessior`) {
           result = `tie`;
         } else if (computerMove == `rock`) {
@@ -98,18 +87,21 @@
           result = `You won`;
         }
       }
-      if (result === "tie") {
-        scores.tie = scores.tie + 1;
+
+      // score update (your logic was right, only formatting changed)
+      if (result === 'tie') {
+        score.tie = score.tie + 1;
       } else if (result === `You won`) {
-        scores.win = scores.win + 1;
+        score.win = score.win + 1;
       } else {
-        scores.lose = scores.lose + 1;
+        score.lose = score.lose + 1;
       }
-      localStorage.setItem("scores", JSON.stringify(scores));
+
       alert(
-        `${result}, computer choose ${computerMove}, score ${scores.win} win ${scores.lose} lose ${scores.tie} tie` 
+        `${result}, computer choose ${computerMove}, score ${score.win} win ${score.lose} lose ${score.tie} tie`
       );
     }
+
     function getComputerMove() {
       let random = Math.random();
       if (random >= 0 && random < 1 / 3) {
