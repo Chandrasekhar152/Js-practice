@@ -1,76 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <button
-      class="dom"
-      onclick="
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <button class="dom" onclick="
     sub()
-    "
-    >
-      Subscribe
-    </button>
+    ">
+    Subscribe
+  </button>
 
-    <button
-      class="domFollow"
-      onclick="
+  <button class="domFollow" onclick="
     folow()
-    "
-    >
-      Follow
-    </button>
+    ">
+    Follow
+  </button>
 
-    <br />
-    <p>Delivary page</p>
-    <p>No delivary charge for more then 100</p>
-    <p>10 rupess extra for less 100 even 99 rupess</p>
+  <br />
+  <p>Delivery page</p>
+  <p>No Delivery charge for more then 100</p>
+  <p>10 rupees extra for less 100 even 99 rupess</p>
 
-    <input class="js-price" placeholder="Enter the cost" />
-    <button class="calculate" onclick="shoppingCal()">Calculate</button>
+  <input class="js-price" 
+  onkeydown="if(event.key==='Enter'){
+    shoppingCal()
+  }"
 
-    <p
-      class="pricee"
-      onclick="
-    shoppingCal()"
-    ></p>
+  placeholder="Enter the cost" />
+  <button class="calculate" onclick="shoppingCal()
+    ">Calculate</button>
 
-    <script>
-      function shoppingCal() {
-        const input_value = document.querySelector(".js-price");
-        let cal = Number(input_value.value);
-        console.log(cal);
-        if (cal > 99) {
-          document.querySelector(".pricee").innerHTML = cal;
-        } else {
-          cal += 10;
+  <p class="pricee" onclick="
+    shoppingCal()"></p>
 
-          document.querySelector(".pricee").innerHTML = cal;
-        }
+  <script>
+    function shoppingCal() {
+      const input_value = document.querySelector(".js-price");
+      let cal = Number(input_value.value);
+      console.log(cal);
+      if (cal > 99) {
+        document.querySelector(".pricee").innerHTML = cal;
+      } else {
+        cal += 10;
+
+        document.querySelector(".pricee").innerHTML = cal;
       }
+    }
 
-      let changePrice = document.querySelector(".pricee");
 
-      function sub() {
-        const buttonChange = document.querySelector(".dom");
-        if (buttonChange.innerText === "Subscribe") {
-          buttonChange.innerHTML = "Subscribed";
-        } else {
-          buttonChange.innerHTML = "Subscribe";
-        }
+    function sub() {
+      const buttonChange = document.querySelector(".dom");
+      if (buttonChange.innerText === "Subscribe") {
+        buttonChange.innerHTML = "Subscribed";
+      } else {
+        buttonChange.innerHTML = "Subscribe";
       }
+    }
 
-      function folow() {
-        const following = document.querySelector(".domFollow");
-        if (following.innerText === "Follow") {
-          following.innerHTML = "Follwed";
-        } else {
-          following.innerHTML = "Follow";
-        }
+    function folow() {
+      const following = document.querySelector(".domFollow");
+      if (following.innerText === "Follow") {
+        following.innerHTML = "Follwed";
+      } else {
+        following.innerHTML = "Follow";
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
+
 </html>
