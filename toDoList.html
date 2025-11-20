@@ -9,22 +9,64 @@
 
 <body>
     <p>To Do List</p>
-    <input class="list" placeholder="Enter the list">
+    <input class="list" onkeydown="if(event.key==='Enter'){
+        ToDo()
+  }"
+   placeholder="Enter th e list">
+   <input type="date" class="due-date">
     <button class="submit" onclick="ToDo()">Submit</button>
     <p class="yourlist" onclick="ToDoList()"></p>
+    <div class="js-todos"></div>
 </body>
 <script>
+
+
+    const todoArray =[ {name:"html",
+    dueDate:"2024-06-30",
+    },
+    {name:"css",
+    dueDate:"2024-07-05",
+    },];
+
+    function displayTodos(){
+            let todoElements='';
+
+    for (let i=0; i<todoArray.length;i++)
+{
+    const itemObject=todoArray[i]
+    // const name=itemObject.name
+    // const dueDate=itemObject.dueDate
+    const {name,dueDate}=itemObject
+    const html =`<p>
+        ${name}  ${dueDate}
+             <button onclick="
+             todoArray.splice(${i},1);
+             displayTodos();
+             
+             ">Delete
+             </button>
+        </p>`
+    todoElements+=html;
+}
+document.querySelector('.js-todos').innerHTML=todoElements
+    } 
     let a = []
     function ToDo() {
         let input = document.querySelector('.list')
+        let dateInput = document.querySelector('.due-date')
+        const dueDateVal = dateInput.value
         const val = input.value
-        a.push(val)
-        console.log(a)
+        todoArray.push({name:val,dueDate:dueDateVal})
+        console.log(todoArray)
+        displayTodos();
+        input.value="";
 
     }
     function ToDoList(){
         document.querySelector('.yourlist').innerHTML=a
     }
+     displayTodos();
+
 </script>
 
 </html>
