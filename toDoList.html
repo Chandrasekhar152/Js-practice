@@ -40,6 +40,7 @@
     const html =`<p>
         ${name}  ${dueDate}
              <button onclick="
+
              todoArray.splice(${i},1);
              displayTodos();
              
@@ -54,7 +55,8 @@ document.querySelector('.js-todos').innerHTML=todoElements
     function ToDo() {
         let input = document.querySelector('.list')
         let dateInput = document.querySelector('.due-date')
-        const dueDateVal = dateInput.value
+        const dueDateVal = dateInput.value 
+        console.log(dueDateVal) // Get the value of the date input
         const val = input.value
         todoArray.push({name:val,dueDate:dueDateVal})
         console.log(todoArray)
