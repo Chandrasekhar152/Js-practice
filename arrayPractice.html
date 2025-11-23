@@ -1,0 +1,119 @@
+<!-- p -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="practice">Array Practice</p>
+    <button class="btn" onclick="showMagic()">click to see magic</button>
+</body>
+<script>
+
+
+  function foodPreparing(){
+    // let isFoodready=false
+    let isFoodready=true
+    return new Promise((resolve,regect)=>{
+      setTimeout(()=>{
+        if (isFoodready){
+          resolve("Food Preparing");
+        }
+        else{
+          regect("NOT PREPARED")
+        }
+      document.querySelector('.practice').innerHTML='Hello'
+  },3000)
+    });
+    
+  }
+
+  function Eating(){
+    let isEating=true
+    return new Promise((resolve,regect)=>{
+      setTimeout(() => {
+        if(isEating){
+          resolve ("Eating")
+        }
+        else{
+          regect("Not eaten")
+        }
+    }, 2000);
+    })
+    
+  }
+
+  function goingToSchool(){
+    let isGoing=true
+    return new Promise((resolve,regect)=>{
+      setTimeout(()=>{
+        if(isGoing){
+          resolve("Went to school");
+        }
+        else{
+          regect("Not Going");
+        }
+      
+    },4000)
+    })
+  }
+
+function testing(){
+  let test=true
+  return new Promise(resolve,regect){
+    setTimeout(()=>{
+      if (test){
+      resolve("hi")
+    }
+    else{
+      regect("no")
+    }
+    },2000)
+  }
+
+}
+
+
+testing().then((value)=>{
+  console.log(value)
+})
+
+
+
+
+
+
+
+
+foodPreparing()
+  .then((value)=>{
+    console.log(value)
+      return Eating()
+}).then((value)=>{
+    console.log(value)
+    return goingToSchool()
+  }).then((value)=>{
+      console.log(value)
+    }).catch((error)=>{
+      console.log(error)
+    }).finally(()=>{
+      console.log("Task Over")
+    })
+
+
+
+
+
+
+  // foodPreparing(()=>{
+  //     Eating(()=>{
+  //         goingToSchool();
+
+  //     });
+
+  // });
+</script>
+</html>
