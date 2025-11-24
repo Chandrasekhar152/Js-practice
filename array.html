@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ARROW FUNCTION</h1>
+</body>
+<script>
+    function foodPre(){
+        let isFood=true
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+            if(isFood){
+                resolve('Food is ready')
+            }
+            else{
+                reject("Food is Preparing")
+            }
+    },3000)
+        })
+        
+    }
+
+    function eating(){
+        return new Promise((resolve,reject)=>{
+            let isEating=true
+        setTimeout(()=>{
+            if(isEating){
+            resolve("Eating")
+            }
+            else{
+                reject("No eating")
+            }
+    },2000)
+        })
+
+    }
+
+    function school(){
+        return new Promise((resolve,reject)=>{
+            let isschool=true
+        setTimeout(()=>{
+            if(isschool){
+                resolve("School")
+            }
+            else{
+                reject("Not Going")
+            }
+    },2000)
+        })
+
+    }
+
+
+foodPre().then((value)=>{
+    console.log(value)
+    return eating()
+})
+.then((value)=>{
+        console.log(value)
+        
+    })
+.then((value)=>{
+        return school((value)=>{
+            console.log(value)
+        })
+    }).catch()
+
+</script>
+</html>
